@@ -15,3 +15,5 @@ Satellites (lunched by NASA) circling earth detect wildfires bigger then 3-5 acr
 The AWS account attaches two weeks’ worth of weather information to the location/time data. The weather data is processed (via machine learning algorithms) to tell how big the fire will grow. Below is a flow diagram of the project:
 
 ![alt text](https://github.com/cobrien2442/WildFire_CJO2/blob/master/*storage/Events_chain3.png)
+
+revamping project to run off of lambdas strictly (removing Eventbridge and migrating away from S3 into dynamodb)
