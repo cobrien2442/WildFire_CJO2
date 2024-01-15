@@ -44,7 +44,7 @@ function removeAllTriggers() {
  */
 function attach() {
   // search inbox for relative email data
-  var search = 'in:inbox Subject:FIRMS Rapid Alert Id 41318, modis-c6 (Gtown Wildfire alert)  has:attachment newer_than:' + CYCLE_DAYS + 'd';
+  var search = 'in:inbox Subject:FIRMS Rapid Alert Id 41318, modis-c6 (Gtown Wildfire alert)  has:attachment';
   //parse emails in threads, parse attachments in emails   
   var threads = GmailApp.search(search, 0, PAGE_SIZE);
   var msgs = GmailApp.getMessagesForThreads(threads);
@@ -62,7 +62,7 @@ function attach() {
                         'method' : 'put',
                         'payload' : formData
                       };
-                      //Removed full API link due to securuty concerns
+                      //revamp notes: add try state and create new lambda/api, below link is broken 
                       UrlFetchApp.fetch('https://1zb*******.execute-api.us-east-1.amazonaws.com/dev/firmsauto/'+ attachments[k].getName(), options);
 
 
