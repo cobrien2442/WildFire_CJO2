@@ -57,17 +57,24 @@ function attach() {
         var formData = {
                           'body': atta_blob
                         };
+        
+        var headers = {"x-api-key": apiJawn};
 
         var options = {
-                        'method' : 'put',
-                        'payload' : formData
+                        'payload' : formData,
+                        'headers': headers
                       };
-                      //revamp notes: add try state and create new lambda/api, below link is broken 
-                      UrlFetchApp.fetch('https://1zb*******.execute-api.us-east-1.amazonaws.com/dev/firmsauto/'+ attachments[k].getName(), options);
-
-
-        Logger.log('Message "%s" contains the attachment "%s" (%s bytes)',
-                  msgs[i][j].getSubject(), attachments[k].getName(), attachments[k].getSize());
+        
+        try {
+          var response = UrlFetchApp.fetch('https://9tde5mzv3g.execute-api.us-east-1.amazonaws.com/default', options);
+          Logger.log(response.getContentText());
+          msgs[i][j].moveToTrash();
+        }catch(error){
+          Logger.log(error);
+          msgs[i][j].star()
+          msgs[i][j].markRead();
+          //removeAllTriggers();
+        }
       }
     }
   }  
