@@ -66,6 +66,7 @@ function attach() {
                       };
         
         try {
+          //need to figure out if migrating from lambda or if directly from js is better 
           var response = UrlFetchApp.fetch('https://9tde5mzv3g.execute-api.us-east-1.amazonaws.com/default', options);
           Logger.log(response.getContentText());
           msgs[i][j].moveToTrash();
